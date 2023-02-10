@@ -23,3 +23,32 @@ print(cosa.publico)
 #print(cosa.__privado)
 
 print(cosa._protegido)
+
+
+class Persona():
+    def __init__(self):
+        self.__nombre= ""
+        self.__cedula= 0
+        self.__genero= ""
+
+    def asignarNombre(self,nombre):
+        self.__nombre = nombre
+    def asignarCedula(self, cedula):
+        self.__cedula = cedula
+    def asignarGenero(self,genero):
+        self.__genero = genero
+    
+    def verNombre(self):
+        return self.__nombre
+    def verCedula(self):
+        return self.__cedula
+    def verGenero(self):
+        return self.__genero
+
+class Paciente(Persona):
+    def __init__(self):
+        self.__servicio =""
+    def asignarServicio(self, servicio):
+        self.__servicio =servicio
+    def verServicio(self):
+        return self.__servicio
