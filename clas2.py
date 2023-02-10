@@ -52,3 +52,38 @@ class Paciente(Persona):
         self.__servicio =servicio
     def verServicio(self):
         return self.__servicio
+    
+p1= Paciente()
+p2=Paciente()
+p1.asignarNombre("Pepito")
+p1.asignarCedula(1234567)
+p1.asignarGenero("Mujer")
+print(p1.verNombre())
+
+class Empleado_Hospital(Persona):
+    def __init__(self):
+        self.__turno = ""
+    def asignarTurno(self, turno):
+        self.__turno = turno
+    def verturno(self, turno):
+        return self.__turno
+
+class Enfermera(Empleado_Hospital):
+    def __init__(self):
+        self.__rango = ""
+    def asignarRango(self, rango):
+        self.__rango = rango
+    def verRango(self, rango):
+        return self.__rango
+
+class Medico(Empleado_Hospital):
+    def __init__(self):
+        self.__especialidad = ""
+    def asignarEspecialidad(self, especialidad):
+        self.__especialidad= especialidad
+    def verEspecialidad(self):
+        return self.__especialidad
+
+m1=Medico()
+m1.asignarEspecialidad("Pediatra")
+print(m1.verEspecialidad())
