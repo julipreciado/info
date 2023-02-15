@@ -82,3 +82,4 @@ class Medico(Empleado_Hospital):
 
 s=Sistema()
 s.ingresarPacientes("paciente")
+s.imprimirInfo()
