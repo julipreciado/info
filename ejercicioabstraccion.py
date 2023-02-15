@@ -24,7 +24,7 @@ class Persona():
 class Paciente(Persona):
     def __init__(self):
         self.__servicio =""
-    def asignarServicio(self, servicio):
+    def asignarServicio(self):
         self.__servicio =input("Ingresar el servicio: ")
     def verServicio(self):
         return self.__servicio
@@ -38,7 +38,7 @@ class Sistema(Persona):
         self.__numero_pacientes =len(self.__lista_pacientes)
         return self.__numero_pacientes
 
-def ingresarPacientes(self, rol):
+    def ingresarPacientes(self, rol):
         p=Paciente()
         p.asignarNombre(rol)
         p.asignarCedula(rol)
@@ -46,7 +46,13 @@ def ingresarPacientes(self, rol):
         p.asignarServicio()
         self.__lista_pacientes.append(p)
         print(self.numPacientes())
+        print(self.__lista_pacientes())
 
+    def imprimirInfo(self):
+        print(self.__nombre, self.__cedula, self.__genero)
+
+    def guardarInfo(self):
+        return self.__nombre, self.__cedula, self.__genero
 
 
 class Empleado_Hospital(Persona):
@@ -73,6 +79,6 @@ class Medico(Empleado_Hospital):
     def verEspecialidad(self):
         return self.__especialidad
 
-m1=Medico()
-m1.asignarEspecialidad("Pediatra")
-print(m1.verEspecialidad())
+
+s=Sistema()
+s.ingresarPacientes("paciente")
