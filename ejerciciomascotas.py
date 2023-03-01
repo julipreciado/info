@@ -23,6 +23,8 @@ def main():
         dosis = input("Ingrese la dosis: ")
         medicamento= Medicamento(client)
         medicamento.asignarNombreDosis(nombre_medicamentos, dosis)
+        medicamento.verNombre("Dólex")
+        m+=1
 
-    if __name__=="__main__":
-        main()
+if __name__=="__main__":
+    main()
