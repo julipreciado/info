@@ -63,11 +63,11 @@ class Mascota():
         Fecha=list(self.__mascotas.find())
         print('La fecha de ingreso de la mascota es: ' + str(Fecha[-1]['Fecha ingreso'])) 
 
-    def asignarNumMedicamentos(self,m, numhistoria, nummedicamentos):
+    def asignarNumMedicamentos(self, numhistoria, nummedicamentos):
         myquery = {"Número de historia": numhistoria}
         newvalues = { "$set": { "Número medicamentos ":nummedicamentos} }
         self.__mascotas.update_one(myquery, newvalues)
-        self.__lista_medicamentos = m
+        
 
     def verNumMedicamentos(self):
         NumMedicamentos=list(self.__mascotas.find())
