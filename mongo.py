@@ -6,8 +6,8 @@ mydb=client["bbdd"]
 mycol=mydb["clientes"]
 
 mydict = {"nombre": "Maria", "direccion": 123}
-x=mycol.insert_one(mydict)
-print(x.inserted_id)
+#x=mycol.insert_one(mydict)
+#print(x.inserted_id)
 
 #for x in mycol.find({"direccion":1}):
 #    print(x)
@@ -15,7 +15,7 @@ print(x.inserted_id)
 for y in mycol.find():
     print(y)
 
-newvalues={"$set": {"nombre":"Luis"}}
+newvalues={"$set": {"nombre":"ppp"}}
 
 mycol.update_one(mydict, newvalues)
 
