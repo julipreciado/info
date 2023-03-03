@@ -5,47 +5,73 @@ class Medicamento():
         mydb =client ["sistVete"]
         self.__medicamentos = mydb["medicamentos"]
 
-    def verNombre(self):
-        for x in self.__medicamentos.find():
-            return print(x)
+    def verNombreMed(self):
+        Nombre=list(self.__medicamentos.find())
+        return Nombre[-1]["Nombre"]
     
-    def asignarInfoMed(self, nombre_med, dosis):
-        self.__medicamento = self.__medicamentos.insert_one({"Nombre": nombre_med}) 
-        self.__medicamento = self.__medicamentos.insert_one({"Dosis": dosis})
-        return self.__medicamento
-
-
-class Mascota(Medicamento):
-    def __init__(self, client):
-        Medicamento.__init__(client)
-    
+    def verDosis(self):
+        Dosis=list(self.__medicamentos.find())
+        print('La dosis suministrada es: ' + str(Dosis[-1]['Dosis']))
        
-    def asignarNombreMascota(self,temp):
-        self.__nombre = temp  
 
-    def verNombre(self):
-        return self.__nombre
+    def asignarNombreMed(self, nombre_med):
+        x = self.__medicamentos.insert_one({"Nombre": nombre_med}) 
+        
+    def asignarDosis(self, nombre_med, dosis):
+        myquery={"Nombre": nombre_med}
+        newvalues = {"$set": {"Dosis": dosis}}
+        self.__medicamentos.update_one(myquery, newvalues)
+     
+
+
+class Mascota():
+    def __init__(self, client):
+        mydb =client ["sistVete"]
+        self.__mascotas = mydb["mascota"]
     
-    def asignarTipo(self,temp):
-        self.__tipo = temp 
-        
-    def asignarHistoria(self,temp):
-        self.__num_historia = temp 
-    def verHistoria(self):
-        return self.__num_historia
-        
-    def asignarPeso(self,temp):
-        self.__peso = temp 
-        
-    def asignarFechaIngreso(self,temp):
-        self.__fecha_ingreso = temp 
-    def verFechaIngreso(self):
-        return self.__fecha_ingreso 
+    def asignarHistoria(self,numhistoria):
+        x=self.__mascotas.insert_one({'Número de historia ':numhistoria})
 
-    def asignarMedicamentos(self,m):
+    def asignarNombreMascota(self, numhistoria, nombre_mas):
+        myquery = {"Número de historia": numhistoria}
+        newvalues = { "$set": { "Nombre":nombre_mas} }
+        self.__mascotas.update_one(myquery, newvalues)  
+
+    def verNombreMascota(self):
+        Nombre=list(self.__mascotas.find())
+        print('El nombre de la mascota es: ' + str(Nombre[-1]['Nombre']))
+    
+    def asignarTipo(self,tipo, numhistoria):
+        myquery0 = {"Número de historia": numhistoria}
+        newvalues0 = { "$set": { "Tipo":tipo} }
+        self.__mascotas.update_one(myquery0, newvalues0)
+        
+    def verHistoria(self):
+        Historia=list(self.__mascotas.find())
+        return Historia[-1]['Número de historia']
+        
+    def asignarPeso(self,peso, numhistoria):
+        myquery = {"Número de historia": numhistoria}
+        newvalues = { "$set": { "Peso":peso} }
+        self.__mascotas.update_one(myquery, newvalues) 
+        
+    def asignarFechaIngreso(self,fecha, numhistoria ):
+        myquery = {"Número de historia": numhistoria}
+        newvalues = { "$set": { "Fecha ingreso":fecha} }
+        self.__mascotas.update_one(myquery, newvalues)
+    def verFechaIngreso(self):
+        Fecha=list(self.__mascotas.find())
+        print('La fecha de ingreso de la mascota es: ' + str(Fecha[-1]['Fecha ingreso'])) 
+
+    def asignarNumMedicamentos(self,m, numhistoria, nummedicamentos):
+        myquery = {"Número de historia": numhistoria}
+        newvalues = { "$set": { "Número medicamentos ":nummedicamentos} }
+        self.__mascotas.update_one(myquery, newvalues)
         self.__lista_medicamentos = m
-    def verMedicamentos(self):
-        return self.__lista_medicamentos
+
+    def verNumMedicamentos(self):
+        NumMedicamentos=list(self.__mascotas.find())
+        print('La cantidad de medicamentos es: ' + str(NumMedicamentos[-1]['Número medicamentos'])) 
 
 
 
