@@ -8,7 +8,7 @@ class Sistema():
         self.__neurologia=mydb["neurologia"]
 
     def verificar_db(self, cedula):
-        x=self.__neurologia.find_one({"Cédula":int(cedula)})
+        x=self.__neurologia.find_one({"Cédula":cedula})
         if x==None:
             return None, None
         else:

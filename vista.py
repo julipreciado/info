@@ -15,8 +15,13 @@ class Ventana(QtWidgets.QMainWindow):
         self.mi_controlador=control
 
     def verificar_dato(self):
-        self.mi_controlador.buscarensistema(self.input_cedula.text())
-
+        x=self.mi_controlador.buscarensistema(self.input_cedula.text())
+        if x == False:
+            self.agregar.setEnabled(True)
+            self.continuar.setEnabled(False)
+        else:
+            self.agregar.setEnabled(False)
+            self.continuar.setEnabled(True)
     def rellenar_datos(self, nombre, edad):
         self.verificar.setEnabled(False)
         self.input_nombre.setText(nombre)
